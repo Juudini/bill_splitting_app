@@ -1,5 +1,6 @@
 import { Button, Input } from '@nextui-org/react';
 import { useEffect, useState } from 'react';
+
 import { ADLaM_Display } from 'next/font/google';
 export const textFont = ADLaM_Display({ weight: '400', subsets: ['latin'] });
 interface Friend {
@@ -37,7 +38,8 @@ const AddFriends: React.FC<SelectFriendsProps> = ({ onSelectionChange }) => {
 
   useEffect(() => {
     onSelectionChange(selectedFriends);
-  }, [selectedFriends, onSelectionChange]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedFriends]);
 
   return (
     <div className="flex flex-col gap-2">
