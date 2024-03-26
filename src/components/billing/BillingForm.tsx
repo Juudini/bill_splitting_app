@@ -1,8 +1,17 @@
 'use client';
-import { Chip, Input } from '@nextui-org/react';
+import { Button, Chip, Input } from '@nextui-org/react';
 import React, { useState, FormEvent } from 'react';
 import SelectCategories from './SelectCategories';
 import AddFriends from './AddFriends';
+import { createBilling } from '@/actions/billing/create-biling';
+import { useBillingStore } from '@/stores/billings/billing.store';
+
+interface BillingData {
+  amount: number;
+  friends: string[];
+  category: string;
+  billPerFriend: number;
+}
 
 interface Friend {
   name: string;
@@ -18,7 +27,7 @@ const BillingForm: React.FunctionComponent = () => {
   const [formData, setFormData] = useState<FormData>({
     totalAmount: 0,
     friends: [],
-    category: 'others',
+    category: 'Others',
   });
 
   const handleFriendSelectionChange = (selectedFriends: Friend[]) => {
@@ -35,28 +44,23 @@ const BillingForm: React.FunctionComponent = () => {
     });
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     const totalFriends = formData.friends.length;
     const billPerFriend = formData.totalAmount / (totalFriends + 1);
 
-    const billingData = {
-      totalAmount: formData.totalAmount,
-      friends: formData.friends,
+    const billingData: BillingData = {
+      amount: formData.totalAmount,
+      friends: formData.friends.map(f => f.name),
       category: formData.category,
       billPerFriend: billPerFriend,
     };
-    localStorage.setItem('billingData', JSON.stringify(billingData));
-
-    const existingBillings = JSON.parse(
-      localStorage.getItem('myBillings') ?? '[]',
-    );
-    existingBillings.push(billingData);
-    localStorage.setItem('myBillings', JSON.stringify(existingBillings));
+    await createBilling(billingData);
+    useBillingStore.setState({ billingData: [billingData] });
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-xs mx-auto space-y-4">
+    <form className="max-w-xs mx-auto space-y-4">
       <SelectCategories onSelectionChange={handleCategorySelectionChange} />
       <AddFriends onSelectionChange={handleFriendSelectionChange} />
       <div className="mb-4">
@@ -86,12 +90,12 @@ const BillingForm: React.FunctionComponent = () => {
           {formData.totalAmount}
         </Chip>
       </div>
-      <button
-        type="submit"
+      <Button
+        onClick={handleSubmit}
         className="w-full px-4 py-2 text-white bg-orange-300 rounded-md hover:bg-black transition-colors duration-300 ease-in-out"
       >
         Split Bill
-      </button>
+      </Button>
     </form>
   );
 };

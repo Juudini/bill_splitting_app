@@ -14,10 +14,11 @@ datasource db {
 }
 
 model Billing {
-  id        String   @id @default(uuid())
-  amount    Float
-  friends   String[]
-  category  String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id            String   @id @default(uuid())
+  amount        Float
+  friends       String[]
+  category      String
+  billPerFriend Float
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
 }
