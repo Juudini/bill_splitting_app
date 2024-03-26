@@ -7,7 +7,7 @@ import { NextUIProvider } from '@nextui-org/react';
 export default function Home() {
   return (
     <NextUIProvider className="bg-orange-100/10">
-      <main className="space-y-12 lg:space-y-20 md:mx-16 lg:mx-24 xl:mx-32 pb-32">
+      <main className="space-y-20 lg:space-y-24 md:mx-16 lg:mx-24 xl:mx-32 ">
         <Hero />
         <Billing />
         <BillingLib />
