@@ -12,3 +12,20 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+enum category {
+  FOOD
+  TRANSPORT
+  ENTERTAINMENT
+  SHOPPING
+  OTHER
+}
+
+model Billing {
+  id        String   @id @default(uuid())
+  amount    Float
+  friends   String[]
+  category  category
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
