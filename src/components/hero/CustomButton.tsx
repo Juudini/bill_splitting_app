@@ -1,8 +1,8 @@
-"use client";
-import React from "react";
-import { Button } from "@nextui-org/react";
+'use client';
+import React from 'react';
+import { Button } from '@nextui-org/react';
 
-import { Link } from "react-scroll";
+import { Link } from 'react-scroll';
 interface ButtonProps {
   title: string;
   linkTo: string;
@@ -15,7 +15,7 @@ export default function CustomButton({ title, linkTo }: ButtonProps) {
       variant="flat"
     >
       <Link to={linkTo} spy={true} smooth={true} offset={-100} duration={500}>
-        {title || "Must be a title"}
+        {title || 'Must be a title'}
       </Link>
     </Button>
   );

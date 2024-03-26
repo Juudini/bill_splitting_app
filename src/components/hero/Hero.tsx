@@ -1,7 +1,7 @@
-import Image from "next/image";
-import { motion } from "framer-motion";
-import CustomButton from "./CustomButton";
-import { Button, Link } from "@nextui-org/react";
+import Image from 'next/image';
+import { motion } from 'framer-motion';
+import CustomButton from './CustomButton';
+import { Button, Link } from '@nextui-org/react';
 export default function HeroComponent() {
   return (
     <header id="inicio">

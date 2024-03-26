@@ -1,12 +1,12 @@
-import type { Metadata } from "next";
-import { Roboto } from "next/font/google";
-import "./globals.css";
+import type { Metadata } from 'next';
+import { Roboto } from 'next/font/google';
+import './globals.css';
 
-const inter = Roboto({ subsets: ["latin"], weight: "500" });
+const inter = Roboto({ subsets: ['latin'], weight: '500' });
 
 export const metadata: Metadata = {
-  title: "Bill Splitter",
-  description: "Split bills with your friends easily.",
+  title: 'Bill Splitter',
+  description: 'Split bills with your friends easily.',
 };
 
 export default function RootLayout({
