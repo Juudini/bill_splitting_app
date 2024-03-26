@@ -1,6 +1,5 @@
 'use server';
 import prisma from '@/lib/prisma';
-import { revalidatePath } from 'next/cache';
 import { z } from 'zod';
 
 const billingSchema = z.object({
@@ -11,9 +10,11 @@ const billingSchema = z.object({
 });
 
 export const createBilling = async (formData: any) => {
+  const parsedBillingData = billingSchema.parse(formData);
+
   try {
     const dataFromDb = prisma.billing.create({
-      data: formData,
+      data: parsedBillingData,
     });
     return { status: true, dataFromDb };
   } catch (error) {

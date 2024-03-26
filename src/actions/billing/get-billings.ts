@@ -6,10 +6,11 @@ export const getBillings = async () => {
     const billings = await prisma.billing.findMany({
       orderBy: { createdAt: 'asc' },
     });
-
     return billings;
   } catch (err) {
-    console.log(err);
-    return [];
+    return {
+      status: false,
+      message: 'Error fetching billing data. Please try again.',
+    };
   }
 };
