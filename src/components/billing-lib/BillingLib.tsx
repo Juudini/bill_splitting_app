@@ -4,6 +4,7 @@ import BillingCard from './BillingCard';
 import { getBillings } from '@/actions/billing/get-billings';
 import { UUID } from 'crypto';
 import { useBillingStore } from '@/stores/billings/billing.store';
+import CustomTitle from '../shared/CustomTitle';
 
 interface BillingData {
   id: UUID;
@@ -21,7 +22,7 @@ const BillingLib: React.FC = () => {
 
   useEffect(() => {
     getBillings().then(data => {
-      setBillingData(data as any);
+      setBillingData(data as BillingData[]);
     });
   }, []);
 
@@ -46,7 +47,12 @@ const BillingLib: React.FC = () => {
     filteredBillingData.length === 0 && billingData.length > 0;
 
   return (
-    <div className="max-w-md mx-auto p-4">
+    <div className="max-w-xs lg:max-w-md mx-auto space-y-8">
+      <CustomTitle
+        title="My Billings"
+        subtitle="Below are the billings you have made. You can search by category to filter the results."
+      />
+
       <Input
         label="Search by category"
         type="text"
@@ -54,10 +60,11 @@ const BillingLib: React.FC = () => {
         value={searchCategory}
         onChange={handleSearchChange}
         className="w-full mb-4"
+        aria-labelledby="searchCategory"
       />
 
       <div className="space-y-6">
-        {filteredBillingData.map((data, index) => (
+        {filteredBillingData.map((data: any, index) => (
           <BillingCard key={index} data={data} />
         ))}
 
