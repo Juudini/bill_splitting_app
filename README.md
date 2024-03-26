@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Bill splitting application
 
-## Getting Started
+<details open> 
+  <summary><h2>🧩 Languages & Tools</h2></summary>
+    
+<p align="center">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=typescript,nextjs,postgresql,prisma,docker,tailwindcss,npm,linux&perline=9" />
+  </a>
+</p>
+</details>
 
-First, run the development server:
+## Installation
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+    ```bash
+    # clone this repository
+    $ git clone https://github.com/Juudini/bill_splitting_app.git
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+    # move to project directory
+    $ cd bill_splitting_app
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+    # install dependencies
+    $ npm install
+    ```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Usage
 
-## Learn More
+To use the app, follow these steps:
 
-To learn more about Next.js, take a look at the following resources:
+1. Open a terminal and navigate to the project directory:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   ```bash
+   # move to project directory
+   $ cd bill_spllitting_app_actions
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+   #open with vscode
+   $ code .
+   ```
 
-## Deploy on Vercel
+2. Make sure you have the `.env` file in the root folder.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   ```bash
+   # up postgres db
+   $ docker compose up -d
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+   # migrate the initial schema
+   $ npx prisma migrate dev
+   ```
+
+3. Start the app in development mode:
+
+   ```bash
+   $ npm run dev
+   ```
+
+4. Open your browser and go to [http://localhost:3000](http://localhost:3000) to see the app in action.
+   This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+
+## Real-Time Demo
+
+To see a real-time demo of the app, you can visit [billsplittingjuandebandi.vercel.app](https://billsplittingjuandebandi.vercel.app).
+
+## 🔗 Links
+
+<a href="https://www.linkedin.com/in/juandebandi/"><img alt="LinkedIn" title="LinkedIn" src="https://custom-icon-badges.demolab.com/badge/-LinkedIn-231b2e?style=for-the-badge&logoColor=F8D866&logo=LinkedIn"/></a>
+<a href="https://juandebandi.dev/"><img alt="Portfolio" title="Portfolio" src="https://custom-icon-badges.demolab.com/badge/-|Portfolio-1F222E?style=for-the-badge&logoColor=F8D866&logo=link-external"/></a>
+<a href="mailto:juudinidev@gmail.com">
+<img src="https://custom-icon-badges.demolab.com/badge/-Email-231b2e?style=for-the-badge&logoColor=F8D866&logo=gmail" alt="Email">
+</a>
