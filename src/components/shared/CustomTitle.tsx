@@ -39,7 +39,7 @@ export default function CustomTitle({ title, subtitle }: CustomTitleProps) {
         </div>
       </div>
       <div className="flex flex-col items-center justify-center h-full">
-        <div className="flex flex-col items-center justify-center space-y-4 text-center mb-7">
+        <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
             <p
               className={` text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400 ${descriptionFont.className}`}
