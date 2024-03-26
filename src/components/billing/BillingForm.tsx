@@ -5,6 +5,12 @@ import SelectCategories from './SelectCategories';
 import AddFriends from './AddFriends';
 import { createBilling } from '@/actions/billing/create-biling';
 import { useBillingStore } from '@/stores/billings/billing.store';
+import {
+  customToast,
+  validateAmount,
+  validateCategory,
+  validateFriends,
+} from './form-validations';
 
 interface BillingData {
   amount: number;
@@ -49,14 +55,31 @@ const BillingForm: React.FunctionComponent = () => {
     const totalFriends = formData.friends.length;
     const billPerFriend = formData.totalAmount / (totalFriends + 1);
 
+    if (
+      !validateCategory(formData.category) ||
+      !validateFriends(totalFriends) ||
+      !validateAmount(formData.totalAmount)
+    )
+      return;
+
     const billingData: BillingData = {
       amount: formData.totalAmount,
       friends: formData.friends.map(f => f.name),
       category: formData.category,
       billPerFriend: billPerFriend,
     };
+
     await createBilling(billingData);
+
     useBillingStore.setState({ billingData: [billingData] });
+
+    customToast('success', 'Billing created successfully');
+
+    setFormData({
+      totalAmount: 0,
+      friends: [],
+      category: formData.category,
+    });
   };
 
   return (
