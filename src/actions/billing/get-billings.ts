@@ -4,7 +4,7 @@ import prisma from '@/lib/prisma';
 export const getBillings = async () => {
   try {
     const billings = await prisma.billing.findMany({
-      orderBy: { createdAt: 'asc' },
+      orderBy: { createdAt: 'desc' },
     });
     return billings;
   } catch (err) {
