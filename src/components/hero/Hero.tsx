@@ -45,6 +45,7 @@ export default function HeroComponent() {
           className="mt-8 xl:ml-8"
         >
           <Image
+            priority={false}
             src="/assets/starman.webp"
             alt="Payment Methods"
             width={350}
