@@ -35,8 +35,8 @@ export const validateFriends = (totalFriends: number) => {
 };
 
 export const validateAmount = (amount: number) => {
-  if (amount > 99999999999) {
-    customToast('error', 'Amount should not exceed 99999999999', 3000);
+  if (amount > 99999999) {
+    customToast('error', 'Amount should not exceed 99999999', 3000);
     return false;
   }
   return true;
